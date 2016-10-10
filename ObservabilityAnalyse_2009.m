@@ -52,9 +52,12 @@ row_5 = jacobian(L_4,X);
 
 O = [row_1;row_2;row_3;row_4];
 
-O_val = double(subs(O,{q_0,q_1,q_2,q_3,om_x,om_y,om_z,p_x,p_y,p_z,r_x,r_y,r_z,r_dot_x,r_dot_y,r_dot_z,rho_t_x,rho_t_y,rho_t_z,ita_0,ita_1,ita_2,ita_3},{a(4),a(1),a(2),a(3) .1,.1,.1, .1,.1,.1, .1,.2,.1, .1,.1,.1, 0.1,0.1,0.1, 1,0,0,0}));
+O_val = (subs(O,{om_x,om_y,om_z,p_x,p_y,p_z,rho_t_x,rho_t_y,rho_t_z},{1,3,2, 1,1,0, 0,0,0} ));
 
-rank(double(subs(row_1,{q_0,q_1,q_2,q_3,om_x,om_y,om_z,p_x,p_y,p_z,r_x,r_y,r_z,r_dot_x,r_dot_y,r_dot_z,rho_t_x,rho_t_y,rho_t_z,ita_0,ita_1,ita_2,ita_3},{1,0,0,0, .1,.1,.1, .1,.1,.1, .1,.1,.1, .1,.1,.1, 0.0,0.0,0.0, 1,0,0,0})))
+O_val = double(subs(O,{q_0,q_1,q_2,q_3,om_x,om_y,om_z,p_x,p_y,p_z,r_x,r_y,r_z,r_dot_x,r_dot_y,r_dot_z,rho_t_x,rho_t_y,rho_t_z,ita_0,ita_1,ita_2,ita_3},{1,0,0,0 1,1,1, 2,3,4, 1,1,1, 1,1,1, 3,3,3, 1,0,0,0}));
+rank(O_val,1e-3)
+
+rank(double(subs(row_1,{q_0,q_1,q_2,q_3,om_x,om_y,om_z,p_x,p_y,p_z,r_x,r_y,r_z,r_dot_x,r_dot_y,r_dot_z,rho_t_x,rho_t_y,rho_t_z,ita_0,ita_1,ita_2,ita_3},{1,0,0,0, .15,.12,.132, .12,.55,.80, .1,.1,.1, .1,.1,.1, 0.18,0.25,0.22, 1,0,0,0})))
 	
 
 %fn_CreatePsi(q,rho_t);
